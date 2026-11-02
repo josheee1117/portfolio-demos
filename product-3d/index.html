@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>声域 X1 头戴耳机 · 3D 展示（作品演示）</title>
+<style>
+body{margin:0;overflow:hidden;font-family:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;background:radial-gradient(circle at 50% 40%,#2a2f3a,#0e1015);color:#fff}
+canvas{display:block}#ui{position:fixed;left:24px;top:24px;max-width:320px}
+h1{margin:0;font-size:24px}p{opacity:.7;margin:6px 0 16px;font-size:14px}
+.sw{display:flex;gap:10px;margin-bottom:16px}.sw button{width:34px;height:34px;border-radius:50%;border:2px solid #fff3;cursor:pointer}.sw button.on{border-color:#fff;transform:scale(1.15)}
+#ex{background:#fff;color:#111;border:0;padding:10px 20px;border-radius:999px;font-weight:700;cursor:pointer}
+#tip{position:fixed;bottom:16px;width:100%;text-align:center;font-size:13px;opacity:.6}#demo{position:fixed;right:16px;top:16px;font-size:12px;opacity:.6}
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script></head><body>
+<div id="ui"><h1>声域 X1 头戴耳机</h1><p>虚构产品 · three.js 网页 3D 展示</p><div>颜色：<span id="cn">曜石黑</span></div>
+<div class="sw" id="sw"></div><button id="ex">🔧 拆解结构</button></div>
+<div id="demo">作品演示 · 非真实品牌</div><div id="tip">拖动旋转 · 滚轮/双指缩放</div>
+<script type="module">
+import * as THREE from 'three';import {OrbitControls} from './vendor/OrbitControls.js';
+const r=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});r.setPixelRatio(Math.min(devicePixelRatio,2));r.setSize(innerWidth,innerHeight);document.body.appendChild(r.domElement);
+const s=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,innerWidth/innerHeight,.1,100);cam.position.set(3.2,1.6,6.8);
+const ctl=new OrbitControls(cam,r.domElement);ctl.enableDamping=true;ctl.target.set(0,.2,0);ctl.minDistance=3;ctl.maxDistance=10;ctl.autoRotate=true;ctl.autoRotateSpeed=1.2;
+s.add(new THREE.HemisphereLight(0xffffff,0x334,1.2));const d=new THREE.DirectionalLight(0xffffff,2);d.position.set(3,5,4);s.add(d);
+const body=new THREE.MeshStandardMaterial({color:0x222222,metalness:.3,roughness:.4}),metal=new THREE.MeshStandardMaterial({color:0xcccccc,metalness:.9,roughness:.2}),
+pad=new THREE.MeshStandardMaterial({color:0x111111,roughness:.9}),drv=new THREE.MeshStandardMaterial({color:0x8a6d3b,metalness:.6,roughness:.3});
+const g=new THREE.Group();s.add(g);const parts=[];
+function add(m,pos,off,rot){m.position.copy(pos);if(rot)m.rotation.set(...rot);m.userData={home:pos.clone(),off};g.add(m);parts.push(m)}
+const V=(x,y,z)=>new THREE.Vector3(x,y,z);
+add(new THREE.Mesh(new THREE.TorusGeometry(1.1,.08,16,64,Math.PI),body),V(0,.2,0),V(0,1,0));
+add(new THREE.Mesh(new THREE.TorusGeometry(1.0,.05,12,64,Math.PI*.8),pad),V(0,.2,0),V(0,1.6,0),[0,0,Math.PI*.1]);
+for(const sx of[-1,1]){
+ add(new THREE.Mesh(new THREE.CylinderGeometry(.06,.06,.5),metal),V(sx*1.1,-.05,0),V(sx*.6,.5,0));
+ add(new THREE.Mesh(new THREE.CylinderGeometry(.45,.45,.25,48),body),V(sx*1.1,-.55,0),V(sx*1.4,0,0),[0,0,Math.PI/2]);
+ add(new THREE.Mesh(new THREE.CylinderGeometry(.32,.32,.05,48),drv),V(sx*.96,-.55,0),V(sx*.7,0,0),[0,0,Math.PI/2]);
+ add(new THREE.Mesh(new THREE.TorusGeometry(.36,.1,16,48),pad),V(sx*.9,-.55,0),V(sx*.1,0,0),[0,Math.PI/2,0]);
+ add(new THREE.Mesh(new THREE.CylinderGeometry(.2,.2,.04,32),metal),V(sx*1.24,-.55,0),V(sx*2,0,0),[0,0,Math.PI/2]);}
+const colors=[['曜石黑',0x222222],['冰川白',0xe8e8e8],['极光蓝',0x2d6cdf],['樱花粉',0xe89bb0],['森林绿',0x2f7d4f]];
+const sw=document.getElementById('sw');colors.forEach(([n,c],i)=>{const b=document.createElement('button');b.style.background='#'+c.toString(16).padStart(6,'0');b.title=n;b.dataset.name=n;if(!i)b.className='on';
+ b.onclick=()=>{body.color.setHex(c);document.getElementById('cn').textContent=n;sw.querySelectorAll('button').forEach(x=>x.className='');b.className='on'};sw.appendChild(b)});
+let target=0,t=0;const ex=document.getElementById('ex');ex.onclick=()=>{target=1-target;ex.textContent=target?'🔩 组装还原':'🔧 拆解结构'};
+window.__state=()=>({t,target});
+addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();r.setSize(innerWidth,innerHeight)});
+(function loop(){requestAnimationFrame(loop);t+=(target-t)*.08;const e=t<.5?2*t*t:1-(-2*t+2)**2/2;
+ parts.forEach(p=>p.position.copy(p.userData.home).addScaledVector(p.userData.off,e));ctl.update();r.render(s,cam)})();
+</script></body></html>

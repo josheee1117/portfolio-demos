@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1"><title>拾光影像工作室（作品演示）</title>
+<style>:root{--c:#1d1d1f;--a:#c9a227;--bg:#f5f3ef;--t:#1d1d1f}*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;color:var(--t);background:var(--bg);line-height:1.7}
+.demo{background:#111;color:#fff;text-align:center;font-size:13px;padding:6px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 6vw;position:sticky;top:0;background:var(--bg);z-index:9;box-shadow:0 1px 0 #0001}
+.logo{font-weight:800;font-size:20px;color:var(--c)}nav ul{display:flex;gap:24px;list-style:none}nav a{color:var(--t);text-decoration:none}
+.mb{display:none;background:none;border:0;font-size:24px;color:var(--t)}
+.hero{padding:80px 6vw;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}.hero h1{font-size:clamp(30px,5vw,54px);line-height:1.2;color:var(--c)}.hero p{margin:16px 0 26px;font-size:18px;opacity:.85}
+.art{aspect-ratio:1;border-radius:24px;display:grid;place-items:center;font-size:110px}
+.btn{display:inline-block;background:var(--c);color:#fff;padding:13px 26px;border-radius:999px;text-decoration:none;font-weight:600;border:0;cursor:pointer;font-size:16px}
+section{padding:70px 6vw}h2{font-size:30px;color:var(--c);text-align:center;margin-bottom:36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.card{background:#fff;border-radius:16px;padding:26px;box-shadow:0 6px 24px #0000000f}.card .e{font-size:40px}.card h3{margin:8px 0 4px}
+.stats{display:flex;justify-content:center;gap:50px;flex-wrap:wrap;text-align:center}.stats b{display:block;font-size:36px;color:var(--a)}
+form{max-width:520px;margin:auto;display:grid;gap:12px}input,select,textarea{padding:13px;border-radius:10px;border:1px solid #ccc;font-size:16px;font-family:inherit}
+.ok{text-align:center;color:green;display:none}footer{text-align:center;padding:28px;background:#111;color:#bbb;font-size:14px}
+@media(max-width:760px){nav ul{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 6vw}nav ul.open{display:flex}.mb{display:block}.hero{grid-template-columns:1fr;padding:50px 6vw}.art{max-width:240px;margin:auto;font-size:80px}}.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.gal div{aspect-ratio:4/3;border-radius:12px;transition:.3s}.gal div:hover{transform:scale(1.03)}@media(max-width:760px){.gal{grid-template-columns:1fr 1fr}}</style></head><body><div class="demo">⚠️ 作品演示 · 虚构商家，非真实品牌，表单不会发送任何数据</div>
+
+<nav><div class="logo">📷 拾光影像</div><button class="mb">☰</button><ul><li><a href="#work">作品</a></li><li><a href="#price">套餐</a></li><li><a href="#book">预约</a></li></ul></nav>
+<header class="hero"><div><h1>把重要的日子，<br>拍成会发光的回忆</h1><p>婚礼跟拍 · 家庭写真 · 品牌商业摄影 · 平面设计。小团队，全程一对一沟通。</p><a class="btn" href="#book">预约档期</a></div><div class="art" style="background:linear-gradient(135deg,#c9a227,#1d1d1f)">🎞️</div></header>
+<section id="work"><h2>精选作品</h2><div class="gal"><div style="background:linear-gradient(135deg,#e0c3fc,#8ec5fc)"></div>
+<div style="background:linear-gradient(135deg,#f6d365,#fda085)"></div>
+<div style="background:linear-gradient(135deg,#84fab0,#8fd3f4)"></div>
+<div style="background:linear-gradient(135deg,#fccb90,#d57eeb)"></div>
+<div style="background:linear-gradient(135deg,#a1c4fd,#c2e9fb)"></div>
+<div style="background:linear-gradient(135deg,#fbc2eb,#a6c1ee)"></div></div></section>
+<section style="background:#fff"><div class="stats"><div><b data-n="320">0</b>场婚礼</div><div><b data-n="1500">0</b>个家庭</div><div><b data-n="4.9">0</b>平均评分</div></div></section>
+<section id="price"><h2>服务套餐</h2><div class="grid"><div class="card"><div class="e">👨‍👩‍👧</div><h3>家庭写真</h3><p>2 小时 · 40 张精修</p><b>S$380 起</b></div><div class="card"><div class="e">💍</div><h3>婚礼跟拍</h3><p>全天双机位 · 相册</p><b>S$1,880 起</b></div><div class="card"><div class="e">🎨</div><h3>品牌设计</h3><p>Logo + 视觉规范</p><b>S$980 起</b></div></div></section>
+<section id="book"><h2>预约档期</h2><form data-demo><input required placeholder="称呼"><input required type="email" placeholder="邮箱"><select><option>家庭写真</option><option>婚礼跟拍</option><option>品牌设计</option></select><textarea rows="3" placeholder="想法与日期"></textarea><button class="btn">提交（演示）</button><p class="ok">✅ 已收到（演示，未发送）</p></form></section><footer>© 2026 拾光影像工作室（虚构）· 建站作品演示</footer><script>document.querySelector('.mb').onclick=()=>document.querySelector('nav ul').classList.toggle('open');
+document.querySelectorAll('form[data-demo]').forEach(f=>f.onsubmit=e=>{e.preventDefault();f.reset();f.querySelector('.ok').style.display='block'});
+const count=n=>{const t=+n.dataset.n,d=t%1?1:0;let i=0;const s=setInterval(()=>{i++;n.textContent=(t*i/40).toFixed(d);if(i>=40)clearInterval(s)},25)};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){count(e.target);io.unobserve(e.target)}}));document.querySelectorAll('[data-n]').forEach(n=>io.observe(n));</script></body></html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>晨光咖啡 · 示例落地页（作品演示）</title>
+<style>
+:root{--c:#6b3e26;--a:#e8a33d;--bg:#fbf6ef;--t:#2b211b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;color:var(--t);background:var(--bg);line-height:1.7}
+.demo{background:#2b211b;color:#fff;text-align:center;font-size:13px;padding:6px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 6vw;position:sticky;top:0;background:rgba(251,246,239,.92);backdrop-filter:blur(8px);z-index:9}
+.logo{font-weight:800;font-size:20px;color:var(--c)}nav ul{display:flex;gap:24px;list-style:none}nav a{color:var(--t);text-decoration:none}
+.menu-btn{display:none;background:none;border:0;font-size:24px}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding:60px 6vw 80px}
+.hero h1{font-size:clamp(32px,5vw,56px);line-height:1.2;color:var(--c)}.hero p{margin:18px 0 28px;font-size:18px;opacity:.85}
+.btn{display:inline-block;background:var(--c);color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-weight:600;border:0;cursor:pointer;font-size:16px}
+.btn.alt{background:transparent;color:var(--c);border:2px solid var(--c);margin-left:10px}
+.cup{aspect-ratio:1;border-radius:40% 60% 55% 45%;background:radial-gradient(circle at 35% 35%,#f6d7a7,#e8a33d 45%,#6b3e26 100%);display:grid;place-items:center;font-size:120px;box-shadow:0 30px 60px rgba(107,62,38,.3);animation:f 6s ease-in-out infinite}
+@keyframes f{50%{transform:translateY(-12px) rotate(3deg)}}
+section{padding:70px 6vw}h2{font-size:32px;color:var(--c);text-align:center;margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.card{background:#fff;border-radius:18px;padding:28px;box-shadow:0 6px 24px rgba(0,0,0,.06);transition:.3s}.card:hover{transform:translateY(-6px)}
+.card .e{font-size:40px}.card h3{margin:10px 0 4px}.price{color:var(--a);font-weight:800;font-size:20px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;background:#fff}
+.stats{display:flex;gap:30px;margin-top:20px}.stats b{display:block;font-size:30px;color:var(--a)}
+.rev{font-style:italic}.rev small{display:block;margin-top:10px;font-style:normal;opacity:.6}
+form{max-width:520px;margin:auto;display:grid;gap:14px}input,select{padding:14px;border-radius:12px;border:1px solid #ddd;font-size:16px}
+#ok{text-align:center;color:green;display:none}
+footer{text-align:center;padding:30px;background:var(--t);color:#ccc;font-size:14px}
+.reveal{opacity:0;transform:translateY(30px);transition:.8s}.reveal.on{opacity:1;transform:none}
+@media(max-width:760px){nav ul{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 6vw}nav ul.open{display:flex}.menu-btn{display:block}
+.hero,.about{grid-template-columns:1fr}.cup{max-width:260px;margin:auto;font-size:80px}.btn.alt{margin:10px 0 0}}
+</style></head><body>
+<div class="demo">⚠️ 作品演示页 · 虚构店铺，非真实商家</div>
+<nav><div class="logo">☕ 晨光咖啡</div><button class="menu-btn" aria-label="菜单" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+<ul><li><a href="#menu">菜单</a></li><li><a href="#about">关于</a></li><li><a href="#reviews">评价</a></li><li><a href="#book">预订</a></li></ul></nav>
+<header class="hero"><div><h1>每一杯，<br>都是清晨的第一缕光</h1><p>街角的小咖啡馆，现烘豆子、手冲咖啡与南洋风味糕点。工作日 7:30 开门，等你来坐坐。</p>
+<a class="btn" href="#book">预订座位</a><a class="btn alt" href="#menu">看看菜单</a></div><div class="cup">☕</div></header>
+<section id="menu"><h2>招牌菜单</h2><div class="grid">
+<div class="card reveal"><div class="e">🥛</div><h3>咖椰拿铁</h3><p>咖椰酱融入浓缩，南洋甜香</p><div class="price">S$6.5</div></div>
+<div class="card reveal"><div class="e">🫖</div><h3>手冲耶加雪菲</h3><p>花香柑橘调，浅烘</p><div class="price">S$7.0</div></div>
+<div class="card reveal"><div class="e">🧊</div><h3>冷萃黑咖啡</h3><p>低温 18 小时萃取</p><div class="price">S$5.5</div></div>
+<div class="card reveal"><div class="e">🥐</div><h3>班兰可颂</h3><p>每日限量 30 个</p><div class="price">S$4.0</div></div></div></section>
+<section id="about" class="about"><div class="cup" style="font-size:90px">🌿</div><div class="reveal"><h2 style="text-align:left">关于我们</h2><p>晨光咖啡是一家虚构的社区小店，用来展示落地页的设计与开发效果：响应式布局、滚动动画、表单交互，手机电脑都好看。</p>
+<div class="stats"><div><b data-n="12000">0</b>杯/年</div><div><b data-n="4.9">0</b>评分</div><div><b data-n="6">0</b>种豆子</div></div></div></section>
+<section id="reviews"><h2>顾客怎么说</h2><div class="grid">
+<div class="card rev reveal">“可颂是全区最好吃的，拿铁也不甜腻。”<small>— 示例顾客 A</small></div>
+<div class="card rev reveal">“安静适合办公，Wi-Fi 很稳。”<small>— 示例顾客 B</small></div>
+<div class="card rev reveal">“店员会记住我的口味，很温暖。”<small>— 示例顾客 C</small></div></div></section>
+<section id="book"><h2>预订座位</h2><form onsubmit="event.preventDefault();this.reset();document.getElementById('ok').style.display='block'">
+<input required placeholder="您的称呼"><input required type="tel" placeholder="联系电话"><input required type="date">
+<select><option>1–2 人</option><option>3–4 人</option><option>5 人以上</option></select><button class="btn">提交预订（演示）</button><p id="ok">✅ 已收到（演示，不会真的提交）</p></form></section>
+<footer>© 2026 晨光咖啡（虚构）· 本页为建站作品演示</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');e.target.querySelectorAll('[data-n]').forEach(n=>{const t=+n.dataset.n,d=t%1?1:0;let i=0;const s=setInterval(()=>{i++;n.textContent=(t*i/40).toFixed(d);if(i>=40)clearInterval(s)},25)})}}),{threshold:.2});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script></body></html>
