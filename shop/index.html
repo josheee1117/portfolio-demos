@@ -23,9 +23,9 @@ form{max-width:520px;margin:auto;display:grid;gap:12px}input,select,textarea{pad
 document.querySelectorAll('form[data-demo]').forEach(f=>f.onsubmit=e=>{e.preventDefault();f.reset();f.querySelector('.ok').style.display='block'});
 const count=n=>{const t=+n.dataset.n,d=t%1?1:0;let i=0;const s=setInterval(()=>{i++;n.textContent=(t*i/40).toFixed(d);if(i>=40)clearInterval(s)},25)};
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){count(e.target);io.unobserve(e.target)}}));document.querySelectorAll('[data-n]').forEach(n=>io.observe(n));
-const P=[["声域 X1 头戴耳机","🎧",399],["声域 Buds 真无线","🎵",199],["便携蓝牙音箱","🔊",159],["耳机收纳包","👜",39],["编织充电线","🔌",19],["替换耳罩","⭕",29]],cart={};
-grid.innerHTML=P.map((p,i)=>`<div class="card"><div class="e">${p[1]}</div><h3>${p[0]}</h3><b>S$${p[2]}</b><br><button class="btn add" data-i="${i}">加入购物车</button></div>`).join("");
-const render=()=>{let n=0,s=0;items.innerHTML=Object.entries(cart).map(([i,q])=>{n+=q;s+=q*P[i][2];return`<div class="it">${P[i][0]} ×${q}<span><button data-d="${i}">−</button> S$${q*P[i][2]}</span></div>`}).join("")||"<p>购物车是空的</p>";cc.textContent=n;tot.textContent="合计 S$"+s};
+const fmt=v=>"¥"+v.toLocaleString("zh-CN"),P=[["声域 X1 头戴耳机","🎧",1299],["声域 Buds 真无线","🎵",499],["便携蓝牙音箱","🔊",399],["耳机收纳包","👜",69],["编织充电线","🔌",39],["替换耳罩","⭕",59]],cart={};
+grid.innerHTML=P.map((p,i)=>`<div class="card"><div class="e">${p[1]}</div><h3>${p[0]}</h3><b>${fmt(p[2])}</b><br><button class="btn add" data-i="${i}">加入购物车</button></div>`).join("");
+const render=()=>{let n=0,s=0;items.innerHTML=Object.entries(cart).map(([i,q])=>{n+=q;s+=q*P[i][2];return`<div class="it">${P[i][0]} ×${q}<span><button data-d="${i}">−</button> ${fmt(q*P[i][2])}</span></div>`}).join("")||"<p>购物车是空的</p>";cc.textContent=n;tot.textContent="合计 "+fmt(s)};
 const open=o=>{drawer.classList.toggle("open",o);mask.classList.toggle("open",o)};
 grid.onclick=e=>{const i=e.target.dataset.i;if(i){cart[i]=(cart[i]||0)+1;render();open(true)}};
 items.onclick=e=>{const i=e.target.dataset.d;if(i){if(!--cart[i])delete cart[i];render()}};
